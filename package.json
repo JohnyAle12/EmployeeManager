@@ -1,0 +1,12 @@
+{
+  "name": "employee-manager",
+  "version": "1.0.0",
+  "description": "serverless project for learn about it",
+  "main": "handler.js",
+  "scripts": {
+    "deploy:dev": "sls deploy --stage dev --region us-east-1",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
