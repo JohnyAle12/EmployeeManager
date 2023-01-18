@@ -20,6 +20,12 @@ functions:
       - http:
           path: employees_handler # https:://domain.com/stage/employees
           method: get
+  createEmployees:
+    handler: infraestructure/handlers/employees_handler.createEmployees
+    events:
+      - http:
+          path: employees_handler # https:://domain.com/stage/employees
+          method: post
 
 plugins:
   - serverless-offline
