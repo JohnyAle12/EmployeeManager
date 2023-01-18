@@ -15,10 +15,10 @@ provider:
 
 functions:
   getEmployees:
-    handler: infraestructure/handlers/employees.getEmployees
+    handler: infraestructure/handlers/employees_handler.getEmployees
     events:
       - http:
-          path: employees # https:://domain.com/stage/employees
+          path: employees_handler # https:://domain.com/stage/employees
           method: get
 
 plugins:
