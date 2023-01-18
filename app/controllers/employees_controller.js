@@ -34,7 +34,41 @@ const createEmployeesFn = async(data) => {
     return response;
 }
 
+const updateEmployeesFn = async(id) => {
+    let response = null;
+    try {
+        response = responseModel(true, id, 'Empleado actualizado !', StatusCodes.CREATED);
+    } catch (error) {
+        response = responseModel(
+            false,
+            null,
+            `Error unexpected: ${error.message}`,
+            error.statusCode
+        );
+    }
+
+    return response;
+}
+
+const deleteEmployeesFn = async(id) => {
+    let response = null;
+    try {
+        response = responseModel(true, id, 'Empleado eliminado !', StatusCodes.OK);
+    } catch (error) {
+        response = responseModel(
+            false,
+            null,
+            `Error unexpected: ${error.message}`,
+            error.statusCode
+        );
+    }
+
+    return response;
+}
+
 module.exports = {
     getEmployeesFn,
-    createEmployeesFn
+    createEmployeesFn,
+    updateEmployeesFn,
+    deleteEmployeesFn
 }

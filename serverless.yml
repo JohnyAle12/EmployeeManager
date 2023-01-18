@@ -26,6 +26,18 @@ functions:
       - http:
           path: employees_handler # https:://domain.com/stage/employees
           method: post
+  updateEmployees:
+    handler: infraestructure/handlers/employees_handler.updateEmployees
+    events:
+      - http:
+          path: employees_handler/{id} # https:://domain.com/stage/employees/{id}
+          method: put
+  deleteEmployees:
+    handler: infraestructure/handlers/employees_handler.deleteEmployees
+    events:
+      - http:
+          path: employees_handler/{id} # https:://domain.com/stage/employees/{id}
+          method: delete
 
 plugins:
   - serverless-offline
