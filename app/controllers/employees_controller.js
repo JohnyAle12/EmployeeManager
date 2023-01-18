@@ -1,20 +1,18 @@
 
 const data = require('../../infraestructure/data/employees');
+const responseModel = require('../helpers/response');
 
 const getEmployeesList = async() => {
-    let response = {
-        success: true,
-        data: null,
-        message: null,
-        statusCode: 200
-    }
-
+    let response = null;
     try {
-        response.data = data;
+        response = responseModel(true, data);
     } catch (error) {
-        response.success = false;
-        response.message = `Error unexpected: ${error.message}`;
-        response.statusCode = error.statusCode;
+        response = responseModel(
+            false,
+            null,
+            `Error unexpected: ${error.message}`,
+            error.statusCode
+        );
     }
 
     return response;
