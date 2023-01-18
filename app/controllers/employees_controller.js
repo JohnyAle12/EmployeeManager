@@ -18,6 +18,22 @@ const getEmployeesFn = async() => {
     return response;
 }
 
+const getEmployeeFn = async() => {
+    let response = null;
+    try {
+        response = responseModel(true, data[0]);
+    } catch (error) {
+        response = responseModel(
+            false,
+            null,
+            `Error unexpected: ${error.message}`,
+            error.statusCode
+        );
+    }
+
+    return response;
+}
+
 const createEmployeesFn = async(data) => {
     let response = null;
     try {
@@ -68,6 +84,7 @@ const deleteEmployeesFn = async(id) => {
 
 module.exports = {
     getEmployeesFn,
+    getEmployeeFn,
     createEmployeesFn,
     updateEmployeesFn,
     deleteEmployeesFn

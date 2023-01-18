@@ -1,11 +1,16 @@
 'use strict';
 
 const responseHttp = require('../helpers/response');
-const {getEmployeesFn, createEmployeesFn, updateEmployeesFn, deleteEmployeesFn} = require('../../app/controllers/employees_controller');
+const {getEmployeesFn, getEmployeeFn, createEmployeesFn, updateEmployeesFn, deleteEmployeesFn} = require('../../app/controllers/employees_controller');
 
 module.exports.getEmployees = async (event) => {
   const {success, data, message, statusCode} = await getEmployeesFn();
   return responseHttp(success, data, message, statusCode);
+};
+
+module.exports.getEmployee = async (event) => {
+  const {data} = await getEmployeeFn();
+  return responseHttp(null, data, null);
 };
 
 module.exports.createEmployees = async (event) => {
