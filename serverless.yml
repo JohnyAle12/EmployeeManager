@@ -14,11 +14,11 @@ provider:
   region: ${opt:region}
 
 functions:
-  hello:
-    handler: handler.hello
+  getEmployees:
+    handler: infraestructure/handlers/employees.getEmployees
     events:
       - http:
-          path: hello # https:://domain.com/stage/hello
+          path: employees # https:://domain.com/stage/employees
           method: get
 
 plugins:
