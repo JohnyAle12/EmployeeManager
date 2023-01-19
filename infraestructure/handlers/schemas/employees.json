@@ -1,0 +1,16 @@
+{
+    "$schema" : "http://json-schema.org/draft-04/schema#",
+    "title" : "EmployeeCreateModel",
+    "type" : "object",
+    "properties": {
+        "primerNombre": {
+          "description": "The employee first name",
+          "type": "string"
+        },
+        "primerApellido": {
+          "description": "The employee first lastname",
+          "type": "string"
+        }
+    },
+    "required": ["primerNombre", "primerApellido"]
+}

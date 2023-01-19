@@ -20,24 +20,31 @@ functions:
       - http:
           path: employees_handler # https:://domain.com/stage/employees
           method: get
+
   createEmployees:
     handler: infraestructure/handlers/employees_handler.createEmployees
     events:
       - http:
           path: employees_handler # https:://domain.com/stage/employees
           method: post
+          request:
+            schemas:
+              application/json: ${file(infraestructure/handlers/schemas/employees.json)}
+
   updateEmployees:
     handler: infraestructure/handlers/employees_handler.updateEmployees
     events:
       - http:
           path: employees_handler/{id} # https:://domain.com/stage/employees/{id}
           method: put
+
   deleteEmployees:
     handler: infraestructure/handlers/employees_handler.deleteEmployees
     events:
       - http:
           path: employees_handler/{id} # https:://domain.com/stage/employees/{id}
           method: delete
+
   getEmployee:
     handler: infraestructure/handlers/employees_handler.getEmployee
     events:
