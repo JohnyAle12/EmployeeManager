@@ -5,12 +5,51 @@
     "properties": {
         "primerNombre": {
           "description": "The employee first name",
-          "type": "string"
+          "type": "string",
+          "maxLength": 20,
+          "minLength": 2
+        },
+        "segundoNombre": {
+          "description": "The employee second name",
+          "type": ["string", "null"],
+          "maxLength": 20,
+          "minLength": 2
         },
         "primerApellido": {
           "description": "The employee first lastname",
-          "type": "string"
+          "type": "string",
+          "maxLength": 20,
+          "minLength": 2
+        },
+        "fechaNacimiento": {
+            "description": "The employee birth day format YYYY-MM-DD",
+            "type": "string",
+            "pattern": "([1-2][0-9][0-9][0-9])-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$"
+        },
+        "tipoIdentificacion": {
+            "description": "The employee identification type",
+            "enum": ["cc", "nit", "pas", "otro"]
+        },
+        "numeroIdentificacion": {
+            "description": "The employee identification number",
+            "type": "string",
+            "maxLength": 10,
+            "minLength": 1
+        },
+        "sueldo": {
+            "description": "The employee earns",
+            "type": "number",
+            "minimum": 100,
+            "maximum": 99999
         }
     },
-    "required": ["primerNombre", "primerApellido"]
+    "required": [
+        "primerNombre",
+        "segundoNombre",
+        "primerApellido",
+        "fechaNacimiento",
+        "tipoIdentificacion",
+        "numeroIdentificacion",
+        "sueldo"
+    ]
 }

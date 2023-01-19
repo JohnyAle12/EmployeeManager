@@ -12,6 +12,13 @@ provider:
   profile: jprieto
   stage: ${opt:stage}
   region: ${opt:region}
+  apiGateway:
+      request:
+        schemas:
+          create-employee:
+            name: CreateModelEmployee
+            schema: ${file(infraestructure/handlers/schemas/employees.json)}
+            description: "A Model validation for adding employees"
 
 functions:
   getEmployees:
@@ -29,7 +36,7 @@ functions:
           method: post
           request:
             schemas:
-              application/json: ${file(infraestructure/handlers/schemas/employees.json)}
+              application/json: create-employee
 
   updateEmployees:
     handler: infraestructure/handlers/employees_handler.updateEmployees
@@ -37,6 +44,9 @@ functions:
       - http:
           path: employees_handler/{id} # https:://domain.com/stage/employees/{id}
           method: put
+          request:
+            schemas:
+              application/json: create-employee
 
   deleteEmployees:
     handler: infraestructure/handlers/employees_handler.deleteEmployees
