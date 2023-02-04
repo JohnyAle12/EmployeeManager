@@ -1,4 +1,6 @@
+const { StatusCodes } = require('http-status-codes');
 const employeeQuery = require('../../infraestructure/repositories/employees-query');
+const HttpError = require('../exceptions/http-error');
 const employeeDto = require('../helpers/employee-dto');
 
 const findEmployees = async () => {
@@ -8,6 +10,8 @@ const findEmployees = async () => {
 
 const findOneEmployee = async (id) => {
     const data = await employeeQuery.findOneEmployee(id);
+    if(!data[0]) throw new HttpError('User does not exist', StatusCodes.NOT_FOUND);
+
     return employeeDto.getEmployeeFromDBDto(data[0]);
 }
 
