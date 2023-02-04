@@ -25,7 +25,18 @@ const createEmployee = async ({
     numeroIdentificacion,
     sueldo
 }) => {
-
+    await employeeQuery.createEmployee(
+        employeeDto.getDBFromEmployeeDto({
+            primerNombre,
+            segundoNombre,
+            primerApellido,
+            segundoApellido,
+            fechaNacimiento,
+            tipoIdentificacion,
+            numeroIdentificacion,
+            sueldo
+        })
+    );
 }
 
 const updateEmployee = async ({

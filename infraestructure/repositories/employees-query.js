@@ -19,7 +19,16 @@ const createEmployee = async ({
     numero_identificacion,
     sueldo
 }) => {
-
+    await db(tableName).insert({
+        primer_nombre,
+        segundo_nombre,
+        primer_apellido,
+        segundo_apellido,
+        fecha_nacimiento,
+        tipo_identificacion,
+        numero_identificacion,
+        sueldo
+    })
 }
 const updateEmployee = async ({
     primer_nombre,
