@@ -1,13 +1,15 @@
 const { StatusCodes }  = require('http-status-codes');
-const data = require('../../infraestructure/data/employees');
-const responseModel = require('../helpers/response');
+// const data = require('../../infraestructure/data/employees');
+const responseHelper = require('../helpers/response');
+const { getEmployees } = require('../../domain/usecase/employees-usecase');
 
 const getEmployeesFn = async() => {
     let response = null;
     try {
-        response = responseModel(true, data);
+        const data = await getEmployees();
+        response = responseHelper(true, data);
     } catch (error) {
-        response = responseModel(
+        response = responseHelper(
             false,
             null,
             `Error unexpected: ${error.message}`,
@@ -21,9 +23,9 @@ const getEmployeesFn = async() => {
 const getEmployeeFn = async() => {
     let response = null;
     try {
-        response = responseModel(true, data[0]);
+        response = responseHelper(true, data[0]);
     } catch (error) {
-        response = responseModel(
+        response = responseHelper(
             false,
             null,
             `Error unexpected: ${error.message}`,
@@ -37,9 +39,9 @@ const getEmployeeFn = async() => {
 const createEmployeesFn = async(data) => {
     let response = null;
     try {
-        response = responseModel(true, data, 'Empleado creado !', StatusCodes.CREATED);
+        response = responseHelper(true, data, 'Empleado creado !', StatusCodes.CREATED);
     } catch (error) {
-        response = responseModel(
+        response = responseHelper(
             false,
             null,
             `Error unexpected: ${error.message}`,
@@ -53,9 +55,9 @@ const createEmployeesFn = async(data) => {
 const updateEmployeesFn = async(id) => {
     let response = null;
     try {
-        response = responseModel(true, id, 'Empleado actualizado !', StatusCodes.CREATED);
+        response = responseHelper(true, id, 'Empleado actualizado !', StatusCodes.CREATED);
     } catch (error) {
-        response = responseModel(
+        response = responseHelper(
             false,
             null,
             `Error unexpected: ${error.message}`,
@@ -69,9 +71,9 @@ const updateEmployeesFn = async(id) => {
 const deleteEmployeesFn = async(id) => {
     let response = null;
     try {
-        response = responseModel(true, id, 'Empleado eliminado !', StatusCodes.OK);
+        response = responseHelper(true, id, 'Empleado eliminado !', StatusCodes.OK);
     } catch (error) {
-        response = responseModel(
+        response = responseHelper(
             false,
             null,
             `Error unexpected: ${error.message}`,
