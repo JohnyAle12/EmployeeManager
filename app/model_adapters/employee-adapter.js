@@ -10,7 +10,7 @@ const findEmployees = async () => {
 
 const findOneEmployee = async (id) => {
     const data = await employeeQuery.findOneEmployee(id);
-    if(!data[0]) throw new HttpError('User does not exist', StatusCodes.NOT_FOUND);
+    if(!data[0]) return null;
 
     return employeeDto.getEmployeeFromDBDto(data[0]);
 }
@@ -49,7 +49,19 @@ const updateEmployee = async ({
     numeroIdentificacion,
     sueldo
 }, id) => {
-
+    await employeeQuery.updateEmployee(
+        employeeDto.getDBFromEmployeeDto({
+            primerNombre,
+            segundoNombre,
+            primerApellido,
+            segundoApellido,
+            fechaNacimiento,
+            tipoIdentificacion,
+            numeroIdentificacion,
+            sueldo
+        }),
+        id
+    );
 }
 
 const deleteEmployee = async (id) => {

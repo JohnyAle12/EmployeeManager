@@ -19,7 +19,10 @@ module.exports.createEmployees = async (event) => {
 };
 
 module.exports.updateEmployees = async (event) => {
-  const {success, data, message, statusCode} = await updateEmployeesFn(JSON.parse(event.pathParameters.id));
+  const {success, data, message, statusCode} = await updateEmployeesFn(
+    JSON.parse(event.body),
+    JSON.parse(event.pathParameters.id
+  ));
   return responseHttp(success, data, message, statusCode);
 };
 

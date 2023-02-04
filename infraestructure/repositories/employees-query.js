@@ -40,7 +40,16 @@ const updateEmployee = async ({
     numero_identificacion,
     sueldo
 }, id) => {
-
+    await db(tableName).where('id', id).update({
+        primer_nombre,
+        segundo_nombre,
+        primer_apellido,
+        segundo_apellido,
+        fecha_nacimiento,
+        tipo_identificacion,
+        numero_identificacion,
+        sueldo
+    })
 }
 const deleteEmployee = async (id) => {
 
