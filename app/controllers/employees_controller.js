@@ -1,7 +1,7 @@
 const { StatusCodes }  = require('http-status-codes');
 // const data = require('../../infraestructure/data/employees');
 const responseHelper = require('../helpers/response');
-const { getEmployees } = require('../../domain/usecase/employees-usecase');
+const { getEmployees, getDetailEmployee } = require('../../domain/usecase/employees-usecase');
 
 const getEmployeesFn = async() => {
     let response = null;
@@ -20,10 +20,11 @@ const getEmployeesFn = async() => {
     return response;
 }
 
-const getEmployeeFn = async() => {
+const getEmployeeFn = async(id) => {
     let response = null;
     try {
-        response = responseHelper(true, data[0]);
+        const employee = await getDetailEmployee(id);
+        response = responseHelper(true, employee);
     } catch (error) {
         response = responseHelper(
             false,

@@ -9,8 +9,8 @@ module.exports.getEmployees = async (event) => {
 };
 
 module.exports.getEmployee = async (event) => {
-  const {data} = await getEmployeeFn();
-  return responseHttp(null, data, null);
+  const {success, data, message, statusCode} = await getEmployeeFn(JSON.parse(event.pathParameters.id));
+  return responseHttp(success, data, message, statusCode);
 };
 
 module.exports.createEmployees = async (event) => {

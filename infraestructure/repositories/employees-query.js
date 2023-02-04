@@ -7,7 +7,7 @@ const findEmployees = async () => {
 }
 
 const findOneEmployee = async (id) => {
-
+    return db.select().where('id', id).table(tableName);
 }
 const createEmployee = async ({
     primer_nombre,

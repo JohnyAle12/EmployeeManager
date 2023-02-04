@@ -13,7 +13,7 @@ const deleteEmployee = async (id) => {
 
 }
 const getDetailEmployee = async (id) => {
-
+    return await employeeAdapter.findOneEmployee(id);
 }
 
 module.exports = {

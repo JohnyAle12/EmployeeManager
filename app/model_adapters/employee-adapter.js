@@ -7,7 +7,8 @@ const findEmployees = async () => {
 }
 
 const findOneEmployee = async (id) => {
-
+    const data = await employeeQuery.findOneEmployee(id);
+    return employeeDto.getEmployeeFromDBDto(data[0]);
 }
 
 const createEmployee = async ({
