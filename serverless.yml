@@ -19,6 +19,13 @@ provider:
             name: CreateModelEmployee
             schema: ${file(infraestructure/handlers/schemas/employees.json)}
             description: "A Model validation for adding employees"
+  environment:
+    MYSQL_HOST: ${file(./config/${opt:stage, 'dev'}.json):MYSQL_HOST}
+    MYSQL_PORT: ${file(./config/${opt:stage, 'dev'}.json):MYSQL_PORT}
+    MYSQL_USER: ${file(./config/${opt:stage, 'dev'}.json):MYSQL_USER}
+    MYSQL_PASSWORD: ${file(./config/${opt:stage, 'dev'}.json):MYSQL_PASSWORD}
+    MYSQL_DATABASE: ${file(./config/${opt:stage, 'dev'}.json):MYSQL_DATABASE}
+
 
 functions:
   getEmployees:
