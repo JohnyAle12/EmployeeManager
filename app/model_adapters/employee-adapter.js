@@ -65,7 +65,7 @@ const updateEmployee = async ({
 }
 
 const deleteEmployee = async (id) => {
-
+    await employeeQuery.deleteEmployee(id);
 }
 
 module.exports = {

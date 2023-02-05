@@ -15,7 +15,8 @@ const updateEmployee = async (employeeData, id) => {
     return await employeeAdapter.updateEmployee(employeeData, id);
 }
 const deleteEmployee = async (id) => {
-    
+    await validateEmployeeExist(id);
+    return await employeeAdapter.deleteEmployee(id);
 }
 const getDetailEmployee = async (id) => {
     await validateEmployeeExist(id);

@@ -52,7 +52,7 @@ const updateEmployee = async ({
     })
 }
 const deleteEmployee = async (id) => {
-
+    await db(tableName).where('id', id).del()
 }
 
 module.exports = {
